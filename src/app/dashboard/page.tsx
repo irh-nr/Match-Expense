@@ -19,15 +19,16 @@ export default async function DashboardPage() {
     redirect("/login");
   }
   return (
-    <div className="min-h-screen p-8">
-      <div className="max-w-7xl mx-auto">
-        <Header username={user.user_metadata.name} user={user.email} />
-        <BalanceCard />
-
-        <div className="mt-6">
-          <TabsMenu />
+    <main>
+      <div className="min-h-screen p-8">
+        <div className="max-w-7xl mx-auto">
+          <Header username={user.user_metadata.name} user={user.email} />
+          <BalanceCard />
+          <div className="mt-6">
+            <TabsMenu />
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
