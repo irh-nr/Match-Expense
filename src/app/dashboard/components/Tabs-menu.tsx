@@ -12,7 +12,7 @@ export default function TabsMenu() {
           <TabsTrigger value="categories">Manage your Categories</TabsTrigger>
         </TabsList>
         <TabsContent value="transactions">
-          <div className="flex justify-between mb-2">
+          <div className="flex justify-between mb-2 gap-2">
             <SearchInput />
             <Create />
           </div>

@@ -130,7 +130,7 @@ export default function TransactionForm() {
       <form
         id="transaction-form"
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 mx-auto py-10"
+        className="space-y-6 mx-auto py-10"
       >
         <div className="grid grid-cols-12 gap-4 sm:gap-12">
           <div className="col-span-6">
@@ -196,13 +196,15 @@ export default function TransactionForm() {
                           )}
                           disabled={isLoading}
                         >
-                          {field.value
-                            ? categories.find(
-                                (category) => category.id === field.value
-                              )?.name
-                            : isLoading
-                            ? "Loading categories..."
-                            : "Select category"}
+                          <span className="block truncate max-w-[120px] sm:max-w-[220px]">
+                            {field.value
+                              ? categories.find(
+                                  (category) => category.id === field.value
+                                )?.name
+                              : isLoading
+                              ? "Loading categories..."
+                              : "Select category"}
+                          </span>
                           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                         </Button>
                       </FormControl>
@@ -262,11 +264,21 @@ export default function TransactionForm() {
                             !field.value && "text-muted-foreground"
                           )}
                         >
-                          {field.value ? (
-                            format(field.value, "PPP")
-                          ) : (
-                            <span>Pick a date</span>
-                          )}
+                          <span className="block truncate max-w-[120px] sm:max-w-[220px]">
+                            {field.value ? (
+                              <>
+                                <span className="sm:hidden">
+                                  {format(field.value, "MMM dd yyyy")}{" "}
+                                  {/* Mobile */}
+                                </span>
+                                <span className="hidden sm:inline">
+                                  {format(field.value, "PPP")} {/* Desktop */}
+                                </span>
+                              </>
+                            ) : (
+                              "Pick a date"
+                            )}
+                          </span>
                           <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                         </Button>
                       </FormControl>
